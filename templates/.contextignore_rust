@@ -1,0 +1,106 @@
+# ============================================================
+# .contextignore – Rust / Cargo
+# ============================================================
+# Patterns that should NEVER be collected for context.
+# This file is read by collect_context.sh
+# ============================================================
+
+# ── Docker ──────────────────────────────────────────────────
+.docker/
+docker-compose.override.yml
+
+# ── IDE – JetBrains RustRover / IntelliJ ────────────────────
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# ── IDE – VS Code ───────────────────────────────────────────
+.vscode/
+
+# ── Build Artifacts ─────────────────────────────────────────
+/target/
+debug/
+target/
+**/*.rs.bk
+*.pdb
+
+# ── Dependencies ────────────────────────────────────────────
+Cargo.lock
+vendor/
+
+# ── Cargo Registry ──────────────────────────────────────────
+.cargo/
+
+# ── Test & Coverage ─────────────────────────────────────────
+*.profraw
+*.profdata
+*.lcov
+*.coverage
+tarpaulin-report.html
+cobertura.xml
+coverage/
+prof/
+profile/
+
+# ── Documentation ───────────────────────────────────────────
+target/doc/
+
+# ── Rust Analyzer ───────────────────────────────────────────
+.rust-analyzer/
+rust-analyzer/
+
+# ── WASM ────────────────────────────────────────────────────
+pkg/
+*.wasm
+wasm-pack.log
+
+# ── Flamegraph ──────────────────────────────────────────────
+*.svg
+flamegraph.svg
+*.folded
+perf.data
+perf.data.old
+
+# ── Android / Cross-compilation ─────────────────────────────
+.cxx/
+.ndk/
+
+# ── Environment ─────────────────────────────────────────────
+.env
+.env.local
+!.env.example
+
+# ── Logs ────────────────────────────────────────────────────
+*.log
+logs/
+log/
+
+# ── Database ────────────────────────────────────────────────
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+
+# ── Config (local overrides) ────────────────────────────────
+config.toml.local
+*.local.toml
+
+# ── Caches & Temp ───────────────────────────────────────────
+*.cache
+.cache/
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
+
+# ── OS Files ────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+Desktop.ini
+.directory
+
+# ── Project-specific ──────────────────────────────
+# scripts/

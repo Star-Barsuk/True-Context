@@ -1,0 +1,118 @@
+# ============================================================
+# .contextignore – Go / Golang
+# ============================================================
+# Patterns that should NEVER be collected for context.
+# This file is read by collect_context.sh
+# ============================================================
+
+# ── Docker ──────────────────────────────────────────────────
+.docker/
+docker-compose.override.yml
+
+# ── IDE – JetBrains GoLand ──────────────────────────────────
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# ── IDE – VS Code ───────────────────────────────────────────
+.vscode/
+
+# ── Binaries ────────────────────────────────────────────────
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+/bin/
+/dist/
+/output/
+build/
+
+# ── Go Workspace ────────────────────────────────────────────
+go.work
+go.work.sum
+
+# ── Dependencies ────────────────────────────────────────────
+vendor/
+Godeps/
+_deps/
+
+# ── Test & Coverage ─────────────────────────────────────────
+*.test
+*.prof
+*.cover
+coverage.out
+coverage.html
+test-results/
+.testcoverage
+.cov/
+
+# ── Caches ──────────────────────────────────────────────────
+*.swp
+*.swo
+*~
+.go/
+.cache/
+
+# ── Environment ─────────────────────────────────────────────
+.env
+.env.local
+!.env.example
+
+# ── Logs ────────────────────────────────────────────────────
+*.log
+logs/
+log/
+
+# ── Database ────────────────────────────────────────────────
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.db-wal
+*.db-shm
+
+# ── Generated ───────────────────────────────────────────────
+*.pb.go
+*_string.go
+*_mock.go
+mock/
+mocks/
+gen/
+generated/
+
+# ── Protocol Buffers ────────────────────────────────────────
+*.pb.go
+*.trpc.go
+
+# ── Kubernetes ──────────────────────────────────────────────
+.kube/
+
+# ── Linting & Formatting ────────────────────────────────────
+.golangci.yml
+.golangci.json
+.golangci/
+
+# ── Debug ───────────────────────────────────────────────────
+debug
+debug.test
+__debug_bin
+*.debug
+
+# ── Air (live reload) ───────────────────────────────────────
+.air.toml
+tmp/
+
+# ── OS Files ────────────────────────────────────────────────
+.DS_Store
+._*
+Thumbs.db
+Desktop.ini
+.directory
+
+# ── Project-specific ──────────────────────────────
+# scripts/

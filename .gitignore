@@ -1,0 +1,7 @@
+### Context ###
+.contextignore
+context.txt
+scripts/collect_context.sh
+
+### Project ###
+tests

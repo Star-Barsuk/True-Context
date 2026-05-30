@@ -1,0 +1,123 @@
+# ============================================================
+# .contextignore – Android (Gradle, Kotlin, Jetpack Compose)
+# ============================================================
+# Patterns that should NEVER be collected for context.
+# This file is read by collect_context.sh
+# ============================================================
+
+# ── Docker ──────────────────────────────────────────────────
+.docker/
+docker-compose.override.yml
+
+# ── IDE – JetBrains (Android Studio, IntelliJ IDEA) ─────────
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# ── IDE – VS Code ───────────────────────────────────────────
+.vscode/
+
+# ── Gradle & Build artifacts ────────────────────────────────
+.gradle/
+build/
+*.gradle
+!gradle-wrapper.jar
+gradlew
+gradlew.bat
+gradle-wrapper.jar
+/gradle/wrapper/gradle-wrapper.properties
+local.properties
+*.apk
+*.aab
+*.jar
+*.class
+*.dex
+
+# ── Kotlin / KMP ────────────────────────────────────────────
+.kotlin/
+.klib/
+kotlin-js-store/
+kotlin-native/
+*.kotlin_build
+*.kexe
+*.klib
+*.kjsm
+
+# ── Testing & Coverage ──────────────────────────────────────
+*.test
+*.tests
+*.androidTest
+*.unitTest
+*.jacoco
+*.ec
+test-results/
+reports/
+
+# ── Secrets & Local config ──────────────────────────────────
+keystore.properties
+*.jks
+*.keystore
+google-services.json
+GoogleService-Info.plist
+*.p12
+*.pem
+secrets.properties
+
+# ── Logs & Crashes ──────────────────────────────────────────
+*.log
+*.hprof
+*.trace
+*.stacktrace
+logs/
+firebase-crashlytics/
+com_crashlytics_*
+crashlytics.properties
+
+# ── Lint & Quality ──────────────────────────────────────────
+lint-results*
+detekt/
+ktlint/
+
+# ── Caches & Temp ───────────────────────────────────────────
+.cache/
+.cxx/
+*.bak
+*.tmp
+*.swp
+*~
+
+# ── Navigation / Safe Args ──────────────────────────────────
+/navigation/
+/nav_generated/
+/safe_args/
+
+# ── KSP / KAPT ──────────────────────────────────────────────
+/ksp/
+/kapt/
+/kotlin-ksp/
+
+# ── Generated Resources ─────────────────────────────────────
+/generated/
+/generated-sources/
+/gen/
+
+# ── NDK / Native ────────────────────────────────────────────
+.ndk/
+.cxx/
+*.o
+*.obj
+*.so
+*.dylib
+*.dll
+*.a
+
+# ── OS Files ────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+Desktop.ini
+.directory
+
+# ── Project-specific ──────────────────────────────
+# scripts/

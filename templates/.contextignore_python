@@ -1,0 +1,107 @@
+# ============================================================
+# .contextignore – Python / Poetry / Pip
+# ============================================================
+# Patterns that should NEVER be collected for context.
+# This file is read by collect_context.sh
+# ============================================================
+
+# ── Docker ──────────────────────────────────────────────────
+.docker/
+docker-compose.override.yml
+
+# ── IDE – JetBrains PyCharm / IntelliJ ──────────────────────
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# ── IDE – VS Code ───────────────────────────────────────────
+.vscode/
+
+# ── Python Bytecode & Artifacts ─────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+*.egg-info
+build/
+dist/
+.eggs/
+*.whl
+
+# ── Virtual Environments ────────────────────────────────────
+venv/
+.venv/
+env/
+.env/
+ENV/
+env.bak/
+venv.bak/
+
+# ── Poetry ──────────────────────────────────────────────────
+poetry.lock
+
+# ── Linters & Type Checkers ─────────────────────────────────
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/
+.tox/
+.nox/
+*.cache
+
+# ── Test & Coverage ─────────────────────────────────────────
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+.pytest_cache/
+
+# ── Logs ────────────────────────────────────────────────────
+logs/
+*.log
+*.log.*
+
+# ── Database ────────────────────────────────────────────────
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.db-wal
+*.db-shm
+
+# ── Environment & Secrets ───────────────────────────────────
+.env
+.env.*
+!.env.example
+
+# ── Generated / Uploads / Runtime ───────────────────────────
+uploads/
+media/
+tmp/
+temp/
+*.tmp
+*.bak
+
+# ── OS Files ────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+Desktop.ini
+.directory
+
+# ── Project-specific overrides (adjust to your needs) ───────
+# data-base/*
+# file-work/*
+# log-manager/*
+# scripts/*
+# README.md
+# docker-compose.yml
+# pyproject.toml
+# config/logging_config.json
+
+# ── Project-specific ──────────────────────────────
+# scripts/

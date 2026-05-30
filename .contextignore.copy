@@ -1,0 +1,17 @@
+# ───────────── Not Working - Ok ──────
+# templates/
+
+# ───────────── Not Working - Ok ──────
+# test_1
+# test_1/
+
+# ───────────── Working - Ok ──────
+# templates
+# templates/*
+
+# ───────────── Working - Ok ──────
+# test_1/*
+# test_3/*
+# test_3/test_file_3.js
+# test_2/test_file_4.py
+# test_2/test_3/*

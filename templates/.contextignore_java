@@ -1,0 +1,131 @@
+# ============================================================
+# .contextignore – Java / Maven / Gradle / Spring Boot
+# ============================================================
+# Patterns that should NEVER be collected for context.
+# This file is read by collect_context.sh
+# ============================================================
+
+# ── Docker ──────────────────────────────────────────────────
+.docker/
+docker-compose.override.yml
+
+# ── IDE – JetBrains IntelliJ IDEA ───────────────────────────
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# ── IDE – VS Code ───────────────────────────────────────────
+.vscode/
+
+# ── Maven ───────────────────────────────────────────────────
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/
+mvnw
+mvnw.cmd
+
+# ── Gradle ──────────────────────────────────────────────────
+.gradle/
+gradle/
+gradlew
+gradlew.bat
+*.gradle
+!gradle-wrapper.jar
+/gradle/wrapper/gradle-wrapper.properties
+build/
+
+# ── Spring Boot ─────────────────────────────────────────────
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# ── Compilation ─────────────────────────────────────────────
+*.class
+*.log
+*.ctxt
+
+# ── Eclipse ─────────────────────────────────────────────────
+.settings/
+.project
+.classpath
+.factorypath
+.metadata/
+bin/
+.loadpath
+.recommenders
+
+# ── NetBeans ────────────────────────────────────────────────
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# ── Testing ─────────────────────────────────────────────────
+.testReports/
+jacoco.exec
+*.jacoco
+coverage/
+.junit/
+
+# ── Configuration ───────────────────────────────────────────
+application-local.properties
+application-local.yml
+application-dev.properties
+application-dev.yml
+*.local.properties
+*.local.yml
+secrets.properties
+credentials.properties
+
+# ── Database ────────────────────────────────────────────────
+*.db
+*.sqlite
+*.sqlite3
+*.h2.db
+*.mv.db
+
+# ── Generated Sources ───────────────────────────────────────
+src/generated/
+target/generated-sources/
+apt/
+.apt_generated/
+.apt_generated_tests/
+
+# ── Lombok ──────────────────────────────────────────────────
+.lombok/
+
+# ── Environment ─────────────────────────────────────────────
+.env
+.env.local
+
+# ── Kubernetes ──────────────────────────────────────────────
+.kube/
+
+# ── OS Files ────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+Desktop.ini
+.directory
+
+# ── Caches & Temp ───────────────────────────────────────────
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
+
+# ── Project-specific ──────────────────────────────
+# scripts/
