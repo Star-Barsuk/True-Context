@@ -50,8 +50,6 @@ Build only (after configure): `make build-debug`.
 
 ### Linux release binaries (x86_64 & arm64)
 
-**On your machine (native)**
-
 | Host CPU | Command | Artifact |
 |----------|---------|----------|
 | x86_64 (amd64) | `make package-linux-x86_64` | `dist/true_context-linux-x86_64` |
