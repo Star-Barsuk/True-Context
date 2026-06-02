@@ -218,3 +218,9 @@ add_test(
     COMMAND grep -qF "│   " ${CMAKE_SOURCE_DIR}/docs/context.md
 )
 set_tests_properties(smoke_tree_hierarchy PROPERTIES DEPENDS smoke_collect)
+
+add_test(
+    NAME test_ignore_fixture
+    COMMAND ${CMAKE_SOURCE_DIR}/tests/test_ignore.sh
+)
+set_tests_properties(test_ignore_fixture PROPERTIES DEPENDS smoke_collect)

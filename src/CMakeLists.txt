@@ -9,6 +9,7 @@ set(
     walk/path_list.cpp
     walk/walker.cpp
     ignore/matcher.cpp
+    ignore/gitignore_match.cpp
     sort/sorter.cpp
     render/renderer.cpp
     render/tree_renderer.cpp

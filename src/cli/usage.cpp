@@ -13,14 +13,15 @@ void Usage::print_help(io::StdoutWriter& out) {
     out.write_line("PATH        Root directory to scan (default: .)");
     out.write_line("OUTPUT.md   Output file (default: docs/context.md)");
     out.write_line("");
-    out.write_line("See PROJECT_GOALS.md and docs/ARCHITECTURE.md.");
+    out.write_line("Uses .contextignore in the project root (see templates/.contextignore).");
+    out.write_line("Built-in ignore: .contextignore, docs/context.md");
 }
 
 void Usage::print_version(io::StdoutWriter& out) {
     out.write_cstr(truecontext::kName);
     out.write_cstr(" ");
     out.write_line(truecontext::kVersion);
-    out.write_line("(collector in progress)");
+    out.write_line("");
 }
 
 } // namespace truecontext::cli

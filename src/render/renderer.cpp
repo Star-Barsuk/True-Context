@@ -92,12 +92,9 @@ void Renderer::write_file_body(const char* rel_path) {
         return;
     }
 
-    std::rewind(in);
-
     if (max_file_bytes_ > 0U) {
         std::fseek(in, 0, SEEK_END);
         const long sz = std::ftell(in);
-        std::rewind(in);
         if (sz >= 0 && static_cast<std::size_t>(sz) > max_file_bytes_) {
             std::fclose(in);
             std::fprintf(
@@ -110,12 +107,10 @@ void Renderer::write_file_body(const char* rel_path) {
         }
     }
 
+    std::rewind(in);
     std::fprintf(out, "```\n");
 
-    std::size_t n = peek;
-    if (n > 0U) {
-        std::fwrite(buffer, 1U, n, out);
-    }
+    std::size_t n = 0U;
     while ((n = std::fread(buffer, 1U, sizeof(buffer), in)) > 0U) {
         std::fwrite(buffer, 1U, n, out);
     }

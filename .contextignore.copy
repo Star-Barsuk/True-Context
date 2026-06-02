@@ -1,17 +1,49 @@
-# ───────────── Not Working - Ok ──────
+# ============================================================
+# .contextignore — examples & cookbook (copy/reference only)
+# ============================================================
+# This file is NOT read by true_context. Copy patterns into `.contextignore`.
+# Canonical template: templates/.contextignore
+# ============================================================
+
+# ── Built into true_context (always ignored) ────────────────
+# .contextignore
+# docs/context.md
+
+# ── Directory (trailing slash) ──────────────────────────────
 # templates/
-
-# ───────────── Not Working - Ok ──────
-# test_1
 # test_1/
+# build/
 
-# ───────────── Working - Ok ──────
-# templates
-# templates/*
+# ── Glob anywhere ───────────────────────────────────────────
+# *.log
+# *.tmp
+# **/*.min.js
+# **/node_modules/
 
-# ───────────── Working - Ok ──────
-# test_1/*
-# test_3/*
-# test_3/test_file_3.js
-# test_2/test_file_4.py
-# test_2/test_3/*
+# ── Anchored to repo root (leading /) ───────────────────────
+# /Makefile
+# /dist/
+
+# ── Negation (last matching rule wins) ─────────────────────
+# tests/**
+# !tests/golden/keep.txt
+#
+# dist/*
+# !dist/public/
+# !dist/public/index.html
+#
+# src/**
+# !src/legacy_core.c
+
+# ── Typical repo starter (uncomment) ─────────────────────────
+# .git/
+# build/
+# bin/
+# node_modules/
+# __pycache__/
+# .venv/
+# *.log
+# .env
+
+# ── Copy full template ────────────────────────────────────────
+#   cp templates/.contextignore .contextignore

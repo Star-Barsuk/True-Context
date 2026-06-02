@@ -19,6 +19,14 @@ namespace truecontext::collect {
 namespace {
 
 bool resolve_output_path(const char* output_rel, char* out, std::size_t out_size) {
+    if (output_rel == nullptr) {
+        return false;
+    }
+    if (output_rel[0] == '/') {
+        std::strncpy(out, output_rel, out_size - 1U);
+        out[out_size - 1U] = '\0';
+        return true;
+    }
     char cwd[4096];
     if (getcwd(cwd, sizeof(cwd)) == nullptr) {
         return false;

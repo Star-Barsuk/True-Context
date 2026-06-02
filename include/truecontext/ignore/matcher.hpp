@@ -6,7 +6,7 @@
 
 namespace truecontext::ignore {
 
-/// Default ignores + `.contextignore` (bash-style glob subset).
+/// Built-in self-ignore (`.contextignore`, `docs/context.md`) + project `.contextignore`.
 class Matcher {
 public:
     Matcher() noexcept;
@@ -15,7 +15,6 @@ public:
     Matcher(const Matcher&) = delete;
     Matcher& operator=(const Matcher&) = delete;
 
-    /// Load `.contextignore` from `project_root` if present.
     void load_from_project(const char* project_root);
 
     [[nodiscard]] bool should_ignore(const char* rel_path) const;
@@ -26,15 +25,18 @@ public:
 private:
     struct Pattern {
         char* text{nullptr};
+        bool negated{false};
+        bool directory_only{false};
     };
 
     Pattern* patterns_{nullptr};
     std::size_t count_{0U};
     std::size_t capacity_{0U};
 
-    void add_pattern(const char* line);
-    void add_default_patterns();
-    [[nodiscard]] bool matches(const char* path, const char* pattern) const;
+    void add_pattern_line(const char* line, bool from_user_file);
+    void add_builtin_patterns();
+    [[nodiscard]] bool path_matches(const char* rel_path, const Pattern& rule) const;
+    [[nodiscard]] bool has_negated_under(const char* rel_dir) const;
     void clear_patterns();
 };
 

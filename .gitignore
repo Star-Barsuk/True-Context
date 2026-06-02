@@ -29,6 +29,8 @@ cmake-build-*/
 *.qbs.user
 *.qbs.user.*
 
+dist/
+
 # ── Build Results ───────────────────────────────────────────
 [Dd]ebug/
 [Rr]elease/
@@ -172,12 +174,9 @@ Desktop.ini
 
 # ── Context ─────────────────────────────────────────────────
 .contextignore
-context.txt
 docs/context.md
-scripts/collect_context.sh
 
 # ── Project goals ───────────────────────────────────────────
-PROJECT_GOALS.md
+docs/PROJECT_GOALS.md
 
 # ── Project ─────────────────────────────────────────────────
-tests

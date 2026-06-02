@@ -9,7 +9,8 @@ main.cpp
             ├── truecontext::io::StdoutWriter / StderrWriter / FileWriter
             └── truecontext::collect::Collector
                     ├── walk::Walker      opendir recursion → PathList
-                    ├── ignore::Matcher   defaults + .contextignore
+                    ├── ignore::Matcher   built-in self + `.contextignore` (`!` negation)
+                    │       └── gitignore_match  `**/`, trailing `/`, globs
                     ├── sort::Sorter      priority sort
                     └── render::Renderer  → docs/context.md (markdown)
                             └── TreeRenderer  hierarchical ├── / └── / │

@@ -1,123 +1,133 @@
-# true_context
+# 🚀 True-Context
 
-Native C++ port of [`collect_context.sh`](collect_context.sh): collect project sources into `context.txt` for LLM context, with `.contextignore` support.
+[![C++23](https://img.shields.io/badge/C++-23-00599C?style=flat&logo=cplusplus&logoColor=white)](https://isocpp.org/) [![CMake](https://img.shields.io/badge/CMake-3.28+-brightgreen?style=flat&logo=cmake&logoColor=white)](https://cmake.org/) [![Ninja](https://img.shields.io/badge/Ninja-Build-orange.svg)](https://ninja-build.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20macOS-lightgrey?style=flat)](https://github.com/Star-Barsuk/TrueContext)
 
-**Status:** MVP collector — writes [`docs/context.md`](docs/context.md) (markdown). See [`todo.md`](todo.md) for P0 gaps (gitignore negation, hierarchical tree, etc.).
+Collect project sources into one **markdown** file for LLM context. Git-independent: rules come from **`.contextignore`**.
 
-## Requirements
+---
 
-- CMake ≥ 3.28
-- Ninja
-- GCC or Clang with C++23
+## ⚙️ What it does
 
-```bash
-cmake --version
-ninja --version
-g++ --version   # or clang++
-```
-
-## Quick start
+- Walks files from a root path
+- Applies **`.contextignore`** — globs, `dir/`, `**`, and `!` negation
+- Skips binary files and very large files (`MAX_FILE_SIZE`, default 500000 bytes)
+- Writes **`docs/context.md`** by default: hierarchical tree + file contents
 
 ```bash
-# Configure (Debug) + build
-make debug
-
-# Run
-./bin/Debug/true_context --help
-./bin/Debug/true_context --version
+true_context .                      # → docs/context.md
+true_context src/ docs/review.md    # custom root and output
+true_context --help
 ```
 
-## Build variants
+**Always ignored by the tool (built-in):** `.contextignore`, `docs/context.md`.
+All other paths (`.git`, `build/`, `node_modules/`, …) — add them to your `.contextignore`.
+Copy the template: [`templates/.contextignore`](templates/.contextignore).
 
-| Command | Preset | Notes |
-|---------|--------|--------|
-| `make debug` | `debug` | Default dev build (`-O0 -g`) |
-| `make release` | `release` | Optimized (`-O3`) |
-| `make sanitize` | `debug-sanitize` | ASan + UBSan |
-| `make lto` | `release-lto` | Release + LTO |
+---
 
-Configure without building: `make config-debug`  
-Build only (after configure): `make build-debug`
+## 🔧 Build from source
 
-Outputs land under `bin/<BuildType>/` (e.g. `bin/Debug/true_context`).
-
-## Tests
+**Requirements:**
+| Component | Version |
+|-----------|---------|
+| CMake | 3.28+ |
+| Ninja | Latest |
+| GCC | 14+ |
+| Clang | 18+ |
+| GNU Make | 4.0+ |
 
 ```bash
-make debug
-make test
+git clone https://github.com/Star-Barsuk/TrueContext.git ./true_context
+cd true_context
+
+make debug          # configure + build → bin/Debug/true_context
+make release        # optimized → bin/Release/true_context
+make test           # ctest smoke tests
 ```
 
-Runs CMake `ctest` (smoke: `--help` / `--version`).
+Build only (after configure): `make build-debug`.
 
-Manual smoke script:
+### Linux release binaries (x86_64 & arm64)
+
+**On your machine (native)**
+
+| Host CPU | Command | Artifact |
+|----------|---------|----------|
+| x86_64 (amd64) | `make package-linux-x86_64` | `dist/true_context-linux-x86_64` |
+| arm64 (aarch64) | `make package-linux-aarch64` | `dist/true_context-linux-aarch64` |
+
+Both: `make package-linux` (x86_64 native + arm64 cross on amd64 host).
+
+**Cross-compile arm64 on x86_64 (Debian/Ubuntu)**
 
 ```bash
-./tests/smoke_build.sh
+sudo apt install gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
+make package-linux-aarch64
+file dist/true_context-linux-aarch64
+# ELF 64-bit LSB executable, ARM aarch64, ...
 ```
 
-## Formatting
+Uses [`cmake/toolchain-aarch64-linux-gnu.cmake`](cmake/toolchain-aarch64-linux-gnu.cmake).
+
+**Manual (same as Make targets)**
 
 ```bash
-make format        # apply clang-format
-make check-format  # CI-style check
+# x86_64
+make release
+cp bin/Release/true_context dist/true_context-linux-x86_64
+strip dist/true_context-linux-x86_64
+
+# arm64 (cross)
+cmake --preset release -DCMAKE_TOOLCHAIN_FILE=cmake/toolchain-aarch64-linux-gnu.cmake
+cmake --build --preset release
+cp bin/Release/true_context dist/true_context-linux-aarch64
+aarch64-linux-gnu-strip dist/true_context-linux-aarch64
 ```
 
-## Debugging (VS Code / Cursor)
+Upload `dist/true_context-linux-*` to [GitHub Releases](https://github.com/Star-Barsuk/TrueContext/releases).
 
-1. `make debug` once (generates `compile_commands.json` symlink).
-2. Open **Run and Debug** → **Debug true_context**.
-3. Set breakpoints in `src/main.cpp` (or future modules).
+---
 
-`.vscode/launch.json` and `tasks.json` are committed for this workflow.
+## 🔧 Install from a GitHub release
 
-CLI debugging without IDE:
+Pick the asset for your OS on the [Releases](https://github.com/Star-Barsuk/TrueContext/releases) page, or use:
+
+**Linux x86_64**
 
 ```bash
-gdb --args ./bin/Debug/true_context --help
+curl -fL -o true_context \
+  https://github.com/Star-Barsuk/TrueContext/releases/latest/download/true_context-linux-x86_64
+chmod +x true_context
+sudo mv true_context /usr/local/bin/
 ```
 
-With sanitizers:
+**Linux arm64**
 
 ```bash
-make sanitize
-./build/debug-sanitize/true_context --version   # or bin/Debug if preset links there — use preset binaryDir for ASan runs
+curl -fL -o true_context \
+  https://github.com/Star-Barsuk/TrueContext/releases/latest/download/true_context-linux-aarch64
+chmod +x true_context
+sudo mv true_context /usr/local/bin/
 ```
 
-After `make sanitize`, the binary is under `build/debug-sanitize/`; `bin/Debug/` follows `CMAKE_BUILD_TYPE=Debug` from that configure.
-
-## Project layout
-
-```text
-CMakeLists.txt          Root build
-CMakePresets.json       Ninja presets
-Makefile                Shortcuts (debug, test, format)
-src/main.cpp            Entry point → app::Application
-include/truecontext/    Headers by layer (cli, io, app, collect, …)
-docs/ARCHITECTURE.md    Layers, namespaces, pipeline
-collect_context.sh      Reference shell implementation
-PROJECT_GOALS.md        Goals, constraints, phases
-todo.md                 Feature backlog
-tests/                  Smoke scripts + CTest
-```
-
-## Collecting context
-
-From the repo root:
+**Verify**
 
 ```bash
-make debug
-./bin/Debug/true_context .
-# → docs/context.md
-
-# Custom output path
-./bin/Debug/true_context . docs/review.md
+true_context --version
+true_context /path/to/your/project
 ```
 
-Optional: `MAX_FILE_SIZE=500000` (bytes, default 500000).
+---
 
-Shell reference implementation: [`collect_context.sh`](collect_context.sh) → `context.txt`.
+# 📄 License
 
-## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-See [LICENSE](LICENSE).
+---
+
+<div align="center">
+
+**© 2026 Star-Barsuk**
+
+</div>
