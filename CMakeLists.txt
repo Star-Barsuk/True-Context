@@ -186,20 +186,10 @@ function(configure_target target_name)
 endfunction()
 
 # ============================================================
-# Main executable
+# Targets (src/CMakeLists.txt)
 # ============================================================
 
-set(_main_source "${CMAKE_SOURCE_DIR}/src/main.cpp")
-
-if(NOT EXISTS "${_main_source}")
-    message(
-        FATAL_ERROR
-        "Main source '${_main_source}' was not found. Create src/main.cpp."
-    )
-endif()
-
-add_executable(true_context "${_main_source}")
-configure_target(true_context)
+add_subdirectory(src)
 
 # ============================================================
 # Tests

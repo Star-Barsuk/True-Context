@@ -92,8 +92,9 @@ After `make sanitize`, the binary is under `build/debug-sanitize/`; `bin/Debug/`
 CMakeLists.txt          Root build
 CMakePresets.json       Ninja presets
 Makefile                Shortcuts (debug, test, format)
-src/main.cpp            Entry point (minimal, no iostream/vector)
-include/truecontext/    Headers (grow with modules)
+src/main.cpp            Entry point → app::Application
+include/truecontext/    Headers by layer (cli, io, app, collect, …)
+docs/ARCHITECTURE.md    Layers, namespaces, pipeline
 collect_context.sh      Reference shell implementation
 PROJECT_GOALS.md        Goals, constraints, phases
 todo.md                 Feature backlog
