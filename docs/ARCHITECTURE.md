@@ -12,6 +12,7 @@ main.cpp
                     ├── ignore::Matcher   defaults + .contextignore
                     ├── sort::Sorter      priority sort
                     └── render::Renderer  → docs/context.md (markdown)
+                            └── TreeRenderer  hierarchical ├── / └── / │
 ```
 
 Default output: **`docs/context.md`** (relative to cwd). Override: `true_context . docs/other.md`.

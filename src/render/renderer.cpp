@@ -1,5 +1,6 @@
 #include <truecontext/render/renderer.hpp>
 
+#include <truecontext/render/tree_renderer.hpp>
 #include <truecontext/util/path.hpp>
 
 #include <cstdlib>
@@ -54,21 +55,7 @@ void Renderer::write_header() {
 }
 
 void Renderer::write_tree(const walk::PathList& files) {
-    auto* file = static_cast<FILE*>(out_);
-    std::fprintf(file, "## Project structure\n\n");
-    std::fprintf(file, "```text\n");
-
-    for (std::size_t i = 0U; i < files.size(); ++i) {
-        const char* path = files.get(i);
-        if (path == nullptr) {
-            continue;
-        }
-        const bool last = (i + 1U == files.size());
-        std::fprintf(file, "%s %s\n", last ? "└──" : "├──", path);
-    }
-
-    std::fprintf(file, "\nTOTAL FILES: %zu\n", files.size());
-    std::fprintf(file, "```\n\n");
+    TreeRenderer::write(static_cast<FILE*>(out_), files);
 }
 
 void Renderer::write_contents(const walk::PathList& files) {

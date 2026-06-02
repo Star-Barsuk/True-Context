@@ -11,6 +11,7 @@ set(
     ignore/matcher.cpp
     sort/sorter.cpp
     render/renderer.cpp
+    render/tree_renderer.cpp
     collect/collector.cpp
 )
 

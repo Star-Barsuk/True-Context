@@ -212,3 +212,9 @@ add_test(
     COMMAND true_context .
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
 )
+
+add_test(
+    NAME smoke_tree_hierarchy
+    COMMAND grep -qF "│   " ${CMAKE_SOURCE_DIR}/docs/context.md
+)
+set_tests_properties(smoke_tree_hierarchy PROPERTIES DEPENDS smoke_collect)
