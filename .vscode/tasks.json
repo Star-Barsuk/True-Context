@@ -1,0 +1,47 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "cmake: configure debug",
+            "type": "shell",
+            "command": "cmake --preset debug && ln -sf build/debug/compile_commands.json compile_commands.json",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "cmake: build debug",
+            "type": "shell",
+            "command": "cmake --build --preset debug",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "dependsOn": ["cmake: configure debug"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "cmake: build sanitize",
+            "type": "shell",
+            "command": "cmake --preset debug-sanitize && cmake --build --preset debug-sanitize",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "ctest: smoke",
+            "type": "shell",
+            "command": "ctest --test-dir build/debug --output-on-failure",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "dependsOn": ["cmake: build debug"],
+            "problemMatcher": []
+        }
+    ]
+}

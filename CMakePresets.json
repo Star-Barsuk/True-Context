@@ -1,0 +1,89 @@
+{
+    "$schema": "https://raw.githubusercontent.com/Kitware/CMake/master/Help/manual/presets/schema.json",
+    "version": 8,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 28,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "base",
+            "hidden": true,
+            "displayName": "Base",
+            "description": "Shared Ninja generator, export compile commands, per-preset build directory",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+                "CMAKE_COLOR_DIAGNOSTICS": "ON"
+            },
+            "warnings": {
+                "dev": true,
+                "deprecated": true,
+                "uninitialized": false,
+                "unusedCli": true
+            }
+        },
+        {
+            "name": "debug",
+            "displayName": "Debug",
+            "description": "Debug build (-O0 -g), IPO off for fast iteration",
+            "inherits": "base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "ENABLE_IPO": "OFF"
+            }
+        },
+        {
+            "name": "release",
+            "displayName": "Release",
+            "description": "Optimized release build (-O3), IPO off by default",
+            "inherits": "base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "ENABLE_IPO": "OFF"
+            }
+        },
+        {
+            "name": "debug-sanitize",
+            "displayName": "Debug + sanitizers",
+            "description": "Debug build with AddressSanitizer and UBSan",
+            "inherits": "debug",
+            "cacheVariables": {
+                "ENABLE_SANITIZERS": "ON"
+            }
+        },
+        {
+            "name": "release-lto",
+            "displayName": "Release + LTO",
+            "description": "Release build with interprocedural optimization (LTO)",
+            "inherits": "release",
+            "cacheVariables": {
+                "ENABLE_IPO": "ON"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "debug",
+            "displayName": "Debug",
+            "configurePreset": "debug"
+        },
+        {
+            "name": "release",
+            "displayName": "Release",
+            "configurePreset": "release"
+        },
+        {
+            "name": "debug-sanitize",
+            "displayName": "Debug + sanitizers",
+            "configurePreset": "debug-sanitize"
+        },
+        {
+            "name": "release-lto",
+            "displayName": "Release + LTO",
+            "configurePreset": "release-lto"
+        }
+    ]
+}

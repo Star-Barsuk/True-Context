@@ -1,0 +1,115 @@
+---
+Language: Cpp
+BasedOnStyle: LLVM
+Standard: Latest
+
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+ColumnLimit: 100
+
+# ============================================================
+# BRACES (clang-format 17+)
+# ============================================================
+
+BreakBeforeBraces: Attach
+InsertBraces: true
+
+BraceWrapping:
+  AfterClass: true
+  AfterStruct: true
+  AfterNamespace: true
+  AfterEnum: true
+  AfterUnion: true
+  BeforeElse: true
+  BeforeCatch: true
+  BeforeWhile: true
+  IndentBraces: false
+  AfterCaseLabel: false
+  AfterControlStatement: Never
+  AfterFunction: false
+
+# ============================================================
+# LAYOUT
+# ============================================================
+
+NamespaceIndentation: All
+IndentCaseLabels: true
+IndentPPDirectives: BeforeHash
+IndentExternBlock: AfterExternBlock
+ContinuationIndentWidth: 4
+SeparateDefinitionBlocks: Always
+PackConstructorInitializers: Never
+BreakConstructorInitializers: BeforeColon
+AlignAfterOpenBracket: BlockIndent
+QualifierAlignment: Left
+RemoveSemicolon: true
+
+# ============================================================
+# STRICT FORMATTING
+# ============================================================
+
+AlignOperands: DontAlign
+AlignConsecutiveAssignments: false
+AlignConsecutiveDeclarations: false
+AlignConsecutiveMacros: false
+AlignTrailingComments: true
+
+PointerAlignment: Left
+DerivePointerAlignment: false
+
+BinPackArguments: false
+BinPackParameters: false
+
+AllowAllArgumentsOnNextLine: true
+AllowAllParametersOfDeclarationOnNextLine: true
+
+# ============================================================
+# CONTROL FLOW
+# ============================================================
+
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortLambdasOnASingleLine: Inline
+
+AlwaysBreakTemplateDeclarations: Yes
+AlwaysBreakAfterReturnType: None
+BreakBeforeTernaryOperators: true
+BreakBeforeBinaryOperators: None
+AllowBreakBeforeNoexceptSpecifier: Always
+
+# ============================================================
+# SPACING
+# ============================================================
+
+SpaceBeforeParens: ControlStatements
+SpaceBeforeAssignmentOperators: true
+SpaceAfterTemplateKeyword: false
+SpaceAfterCStyleCast: false
+
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
+SpacesInAngles: Never
+SpacesInConditionalStatement: false
+
+# ============================================================
+# INCLUDES
+# ============================================================
+
+IncludeBlocks: Regroup
+SortIncludes: CaseInsensitive
+SortUsingDeclarations: true
+
+# ============================================================
+# COMMENTS
+# ============================================================
+
+ReflowComments: true
+MaxEmptyLinesToKeep: 1
+FixNamespaceComments: true
+DeriveLineEnding: true
+
+WhitespaceSensitiveMacros:
+  - PRAGMA_WARNING_DISABLE_GCC

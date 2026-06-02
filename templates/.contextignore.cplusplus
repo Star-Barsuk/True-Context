@@ -1,3 +1,10 @@
+# ============================================================
+# .contextignore – C++ / CMake / Makefile
+# ============================================================
+# Patterns that should NEVER be collected for context.
+# This file is read by collect_context.sh
+# ============================================================
+
 # ── Docker ──────────────────────────────────────────────────
 .docker/
 docker-compose.override.yml
@@ -18,9 +25,7 @@ cmake-build-*/
 *.userprefs
 
 # ── IDE – VS Code ───────────────────────────────────────────
-.vscode/*
-!.vscode/launch.json
-!.vscode/tasks.json
+.vscode/
 *.code-workspace
 
 # ── IDE – Qt Creator ────────────────────────────────────────
@@ -45,6 +50,8 @@ build/
 dist/
 _build/
 output/
+Makefile
+*.mk
 
 # ── CMake ───────────────────────────────────────────────────
 CMakeCache.txt
@@ -170,13 +177,5 @@ Desktop.ini
 # ── Device-Specific ─────────────────────────────────────────
 *.devcontainer*
 
-# ── Context ─────────────────────────────────────────────────
-.contextignore
-context.txt
-scripts/collect_context.sh
-
-# ── Project goals ───────────────────────────────────────────
-PROJECT_GOALS.md
-
-# ── Project ─────────────────────────────────────────────────
-tests
+# ── Project-specific ────────────────────────────────────────
+# scripts/
