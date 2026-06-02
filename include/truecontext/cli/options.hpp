@@ -15,6 +15,9 @@ struct Options {
     /// Points into `argv` — must outlive the process.
     const char* root_path{"."};
 
+    /// Output markdown path relative to cwd (default: docs/context.md).
+    const char* output_path{nullptr};
+
     /// Set when parsing fails; message suitable for stderr.
     const char* error{nullptr};
 };

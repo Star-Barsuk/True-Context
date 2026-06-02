@@ -1,9 +1,16 @@
 set(
     TRUECONTEXT_CORE_SOURCES
     io/stdout_writer.cpp
+    io/file_writer.cpp
+    util/path.cpp
     cli/parser.cpp
     cli/usage.cpp
     app/application.cpp
+    walk/path_list.cpp
+    walk/walker.cpp
+    ignore/matcher.cpp
+    sort/sorter.cpp
+    render/renderer.cpp
     collect/collector.cpp
 )
 

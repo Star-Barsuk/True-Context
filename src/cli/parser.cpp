@@ -39,9 +39,19 @@ Options Parser::parse(int argc, char* argv[]) {
 
     out.action = Action::Collect;
     out.root_path = arg;
+    out.output_path = nullptr;
 
     if (argc > 2) {
-        set_error(out, "unexpected extra arguments");
+        const char* second = argv[2];
+        if (util::starts_with(second, '-')) {
+            set_error(out, "unknown option (try --help)");
+            return out;
+        }
+        if (argc > 3) {
+            set_error(out, "unexpected extra arguments");
+            return out;
+        }
+        out.output_path = second;
     }
 
     return out;

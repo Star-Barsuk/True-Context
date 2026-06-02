@@ -173,6 +173,7 @@ Desktop.ini
 # ── Context ─────────────────────────────────────────────────
 .contextignore
 context.txt
+docs/context.md
 scripts/collect_context.sh
 
 # ── Project goals ───────────────────────────────────────────

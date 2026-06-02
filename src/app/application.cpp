@@ -30,7 +30,7 @@ int Application::dispatch(const cli::Options& options) {
 
     case cli::Action::Collect: {
         collect::Collector collector{options};
-        return collector.run(stderr_);
+        return collector.run(stderr_, stdout_);
     }
     }
 

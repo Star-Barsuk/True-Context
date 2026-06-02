@@ -5,12 +5,13 @@
 namespace truecontext::cli {
 
 void Usage::print_help(io::StdoutWriter& out) {
-    out.write_line("Usage: true_context [PATH]");
+    out.write_line("Usage: true_context [PATH] [OUTPUT.md]");
     out.write_line("       true_context --version");
     out.write_line("       true_context --help");
     out.write_line("");
-    out.write_line("Collect project files into context.txt for LLM prompts.");
-    out.write_line("PATH  Root directory to scan (default: . when implemented).");
+    out.write_line("Collect project files into a markdown context file.");
+    out.write_line("PATH        Root directory to scan (default: .)");
+    out.write_line("OUTPUT.md   Output file (default: docs/context.md)");
     out.write_line("");
     out.write_line("See PROJECT_GOALS.md and docs/ARCHITECTURE.md.");
 }

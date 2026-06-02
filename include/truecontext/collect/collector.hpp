@@ -11,7 +11,7 @@ public:
     explicit Collector(cli::Options options) noexcept;
 
     /// Returns a process exit code (`app::kExit*`).
-    [[nodiscard]] int run(io::StderrWriter& err);
+    [[nodiscard]] int run(io::StderrWriter& err, io::StdoutWriter& out);
 
 private:
     cli::Options options_;

@@ -2,7 +2,7 @@
 
 Native C++ port of [`collect_context.sh`](collect_context.sh): collect project sources into `context.txt` for LLM context, with `.contextignore` support.
 
-**Status:** scaffold only — CLI stub runs; collector logic is tracked in [`PROJECT_GOALS.md`](PROJECT_GOALS.md) and [`todo.md`](todo.md).
+**Status:** MVP collector — writes [`docs/context.md`](docs/context.md) (markdown). See [`todo.md`](todo.md) for P0 gaps (gitignore negation, hierarchical tree, etc.).
 
 ## Requirements
 
@@ -101,14 +101,22 @@ todo.md                 Feature backlog
 tests/                  Smoke scripts + CTest
 ```
 
-## Collecting context (today)
+## Collecting context
 
-Until the C++ collector is implemented, use the shell script from the repo root:
+From the repo root:
 
 ```bash
-./collect_context.sh
-# output: context.txt (path depends on script; see script PROJECT_ROOT)
+make debug
+./bin/Debug/true_context .
+# → docs/context.md
+
+# Custom output path
+./bin/Debug/true_context . docs/review.md
 ```
+
+Optional: `MAX_FILE_SIZE=500000` (bytes, default 500000).
+
+Shell reference implementation: [`collect_context.sh`](collect_context.sh) → `context.txt`.
 
 ## License
 

@@ -206,3 +206,9 @@ add_test(
     NAME smoke_version
     COMMAND true_context --version
 )
+
+add_test(
+    NAME smoke_collect
+    COMMAND true_context .
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+)

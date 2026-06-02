@@ -4,12 +4,17 @@
 
 ```text
 main.cpp
-    └── truecontext::app::Application      orchestration, exit codes
-            ├── truecontext::cli::Parser   argv → Options
-            ├── truecontext::cli::Usage    help / version text
-            ├── truecontext::io::StdoutWriter
-            └── truecontext::collect::Collector   pipeline (walk → filter → render)
+    └── truecontext::app::Application
+            ├── truecontext::cli::Parser / Usage
+            ├── truecontext::io::StdoutWriter / StderrWriter / FileWriter
+            └── truecontext::collect::Collector
+                    ├── walk::Walker      opendir recursion → PathList
+                    ├── ignore::Matcher   defaults + .contextignore
+                    ├── sort::Sorter      priority sort
+                    └── render::Renderer  → docs/context.md (markdown)
 ```
+
+Default output: **`docs/context.md`** (relative to cwd). Override: `true_context . docs/other.md`.
 
 Dependencies flow **inward**: `collect` may use `cli` types; `cli` and `io` do not depend on `collect`.
 
