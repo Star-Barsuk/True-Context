@@ -5,6 +5,7 @@
 .PHONY: package-linux-x86_64 package-linux-aarch64 package-linux
 
 SRC_FILES := $(shell find src include -type f \( -name "*.cpp" -o -name "*.hpp" \))
+UNAME_M := $(shell uname -m)
 
 # ── Configure (switch preset) ───────────────────────────────
 
