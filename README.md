@@ -1,6 +1,6 @@
-# 🚀 True-Context
-
 <div align="center">
+
+# True-Context
 
 [![C++23](https://img.shields.io/badge/C++-23-00599C?style=flat&logo=cplusplus&logoColor=white)](https://isocpp.org/) [![CMake](https://img.shields.io/badge/CMake-3.28+-brightgreen?style=flat&logo=cmake&logoColor=white)](https://cmake.org/) [![Ninja](https://img.shields.io/badge/Ninja-Build-orange.svg)](https://ninja-build.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Platform](https://img.shields.io/badge/Platform-Linux-lightgrey?style=flat&logo=linux&logoColor=white)](https://github.com/Star-Barsuk/TrueContext)
