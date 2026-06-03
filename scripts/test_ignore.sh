@@ -2,12 +2,12 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-BIN="$ROOT/bin/Debug/true_context"
+BIN="$ROOT/bin/Debug/true-context"
 FIXTURE="$ROOT/tests/fixtures/ignore_sample"
 OUT="$FIXTURE/out.md"
 
 if [[ ! -x "$BIN" ]]; then
-    echo "error: build true_context first (make debug)" >&2
+    echo "error: build true-context first (make debug)" >&2
     exit 1
 fi
 

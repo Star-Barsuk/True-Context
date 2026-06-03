@@ -2,11 +2,13 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug true_context",
+            "name": "Debug true-context",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/bin/Debug/true_context",
-            "args": ["--help"],
+            "program": "${workspaceFolder}/bin/Debug/true-context",
+            "args": [
+                "--help"
+            ],
             "cwd": "${workspaceFolder}",
             "stopAtEntry": false,
             "environment": [],
@@ -23,11 +25,13 @@
             "preLaunchTask": "cmake: build debug"
         },
         {
-            "name": "Debug true_context (sanitizers)",
+            "name": "Debug true-context (sanitizers)",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/debug-sanitize/true_context",
-            "args": ["--version"],
+            "program": "${workspaceFolder}/build/debug-sanitize/true-context",
+            "args": [
+                "--version"
+            ],
             "cwd": "${workspaceFolder}",
             "stopAtEntry": false,
             "MIMode": "gdb",

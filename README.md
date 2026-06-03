@@ -19,9 +19,9 @@ Collect project sources into one **markdown** file for LLM context. Git-independ
 - Writes **`docs/context.md`** by default: hierarchical tree + file contents
 
 ```bash
-true_context .                      # → docs/context.md
-true_context src/ docs/review.md    # custom root and output
-true_context --help
+true-context .                      # → docs/context.md
+true-context src/ docs/review.md    # custom root and output
+true-context --help
 ```
 
 **Always ignored by the tool (built-in):** `.contextignore`, `docs/context.md`.
@@ -42,11 +42,11 @@ Copy the template: [`templates/.contextignore`](templates/.contextignore).
 | GNU Make | 4.0+ |
 
 ```bash
-git clone https://github.com/Star-Barsuk/TrueContext.git ./true_context
-cd true_context
+git clone https://github.com/Star-Barsuk/TrueContext.git ./true-context
+cd true-context
 
-make debug          # configure + build → bin/Debug/true_context
-make release        # optimized → bin/Release/true_context
+make debug          # configure + build → bin/Debug/true-context
+make release        # optimized → bin/Release/true-context
 make test           # ctest smoke tests
 ```
 
@@ -56,8 +56,8 @@ Build only (after configure): `make build-debug`.
 
 | Host CPU | Command | Artifact |
 |----------|---------|----------|
-| x86_64 (amd64) | `make package-linux-x86_64` | `dist/true_context-linux-x86_64` |
-| arm64 (aarch64) | `make package-linux-aarch64` | `dist/true_context-linux-aarch64` |
+| x86_64 (amd64) | `make package-linux-x86_64` | `dist/true-context-linux-x86_64` |
+| arm64 (aarch64) | `make package-linux-aarch64` | `dist/true-context-linux-aarch64` |
 
 Build both targets:: `make package-linux` (x86_64 native + arm64 cross on amd64 host).
 
@@ -80,7 +80,7 @@ make package-linux-aarch64
 Verify the generated binary:
 
 ```bash
-file dist/true_context-linux-aarch64
+file dist/true-context-linux-aarch64
 # ELF 64-bit LSB executable, ARM aarch64, ...
 ```
 
@@ -95,19 +95,19 @@ These commands are equivalent to the Makefile package targets.
 make release
 mkdir -p dist
 
-cp bin/Release/true_context \
-  dist/true_context-linux-x86_64
-strip dist/true_context-linux-x86_64
+cp bin/Release/true-context \
+  dist/true-context-linux-x86_64
+strip dist/true-context-linux-x86_64
 
 # Linux arm64 (cross)
 cmake --preset release-aarch64
 cmake --build --preset release-aarch64
 mkdir -p dist
 
-cp bin/Release/true_context \
-  dist/true_context-linux-aarch64
+cp bin/Release/true-context \
+  dist/true-context-linux-aarch64
 aarch64-linux-gnu-strip \
-  dist/true_context-linux-aarch64
+  dist/true-context-linux-aarch64
 ```
 
 ---
@@ -119,26 +119,26 @@ Pick the asset for your OS on the [Releases](https://github.com/Star-Barsuk/True
 **Linux x86_64**
 
 ```bash
-curl -fL -o true_context \
-  https://github.com/Star-Barsuk/TrueContext/releases/latest/download/true_context-linux-x86_64
-chmod +x true_context
-sudo mv true_context /usr/local/bin/
+curl -fL -o true-context \
+  https://github.com/Star-Barsuk/TrueContext/releases/latest/download/true-context-linux-x86_64
+chmod +x true-context
+sudo mv true-context /usr/local/bin/
 ```
 
 **Linux arm64**
 
 ```bash
-curl -fL -o true_context \
-  https://github.com/Star-Barsuk/TrueContext/releases/latest/download/true_context-linux-aarch64
-chmod +x true_context
-sudo mv true_context /usr/local/bin/
+curl -fL -o true-context \
+  https://github.com/Star-Barsuk/TrueContext/releases/latest/download/true-context-linux-aarch64
+chmod +x true-context
+sudo mv true-context /usr/local/bin/
 ```
 
 **Verify**
 
 ```bash
-true_context --version
-true_context /path/to/your/project
+true-context --version
+true-context /path/to/your/project
 ```
 
 ---

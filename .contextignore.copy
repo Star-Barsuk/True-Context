@@ -1,11 +1,11 @@
 # ============================================================
 # .contextignore — examples & cookbook (copy/reference only)
 # ============================================================
-# This file is NOT read by true_context. Copy patterns into `.contextignore`.
+# This file is NOT read by true-context. Copy patterns into `.contextignore`.
 # Canonical template: templates/.contextignore
 # ============================================================
 
-# ── Built into true_context (always ignored) ────────────────
+# ── Built into true-context (always ignored) ────────────────
 # .contextignore
 # docs/context.md
 

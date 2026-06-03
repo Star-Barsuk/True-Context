@@ -25,11 +25,11 @@ target_include_directories(
     "${PROJECT_PUBLIC_INCLUDE_DIR}"
 )
 
-add_executable(true_context main.cpp)
-configure_target(true_context)
+add_executable(true-context main.cpp)
+configure_target(true-context)
 
 target_link_libraries(
-    true_context
+    true-context
     PRIVATE
     truecontext_core
 )

@@ -71,21 +71,21 @@ package-linux-x86_64:
 	@mkdir -p $(DIST_DIR)
 	cmake --preset release-x86_64
 	cmake --build --preset release-x86_64
-	cp bin/Release/true_context $(DIST_DIR)/true_context-linux-x86_64
-	strip $(DIST_DIR)/true_context-linux-x86_64
-	@echo "→ $(DIST_DIR)/true_context-linux-x86_64"
+	cp bin/Release/true-context $(DIST_DIR)/true-context-linux-x86_64
+	strip $(DIST_DIR)/true-context-linux-x86_64
+	@echo "→ $(DIST_DIR)/true-context-linux-x86_64"
 
 package-linux-aarch64:
 	@mkdir -p $(DIST_DIR)
 	cmake --preset release-aarch64
 	cmake --build --preset release-aarch64
-	cp bin/Release/true_context $(DIST_DIR)/true_context-linux-aarch64
+	cp bin/Release/true-context $(DIST_DIR)/true-context-linux-aarch64
 ifeq ($(UNAME_M),aarch64)
-	strip $(DIST_DIR)/true_context-linux-aarch64
-	@echo "→ $(DIST_DIR)/true_context-linux-aarch64 (native arm64)"
+	strip $(DIST_DIR)/true-context-linux-aarch64
+	@echo "→ $(DIST_DIR)/true-context-linux-aarch64 (native arm64)"
 else
-	aarch64-linux-gnu-strip $(DIST_DIR)/true_context-linux-aarch64
-	@echo "→ $(DIST_DIR)/true_context-linux-aarch64 (cross from $(UNAME_M))"
+	aarch64-linux-gnu-strip $(DIST_DIR)/true-context-linux-aarch64
+	@echo "→ $(DIST_DIR)/true-context-linux-aarch64 (cross from $(UNAME_M))"
 endif
 
 package-linux: package-linux-x86_64 package-linux-aarch64

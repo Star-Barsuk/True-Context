@@ -199,17 +199,17 @@ enable_testing()
 
 add_test(
     NAME smoke_help
-    COMMAND true_context --help
+    COMMAND true-context --help
 )
 
 add_test(
     NAME smoke_version
-    COMMAND true_context --version
+    COMMAND true-context --version
 )
 
 add_test(
     NAME smoke_collect
-    COMMAND true_context .
+    COMMAND true-context .
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
 )
 

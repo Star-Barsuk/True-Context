@@ -3,6 +3,6 @@
 namespace truecontext {
 
     inline constexpr const char* kVersion = "1.0.0";
-    inline constexpr const char* kName = "true_context";
+    inline constexpr const char* kName = "true-context";
 
 } // namespace truecontext
